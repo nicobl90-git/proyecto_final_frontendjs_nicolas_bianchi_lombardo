@@ -11,7 +11,7 @@
 <body>
     <header>
         <img src="../img/banner.jpg" alt="Banner de la página" width="150">
-        <p>Bienvenido al Universo de los Seres</p>
+        <h1>Bienvenido al Universo de los Seres</h1>
         <p id="saludo"></p> <!-- Agrego este saludo para que el archivo JS lo encuentre despues -->
     </header>
     <nav>
@@ -27,7 +27,7 @@
     </nav>
     <main>
         <section>
-            <h1 class="titulo">PERSONALIZÁ TU VISITA</h1>
+            <h2 class="titulo">PERSONALIZÁ TU VISITA</h2>
             <form id="form-preferencias">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" required>
@@ -47,14 +47,14 @@
         </section>
 
         <section> 
-            <h1 class="titulo">OBRAS LITERARIAS</h1>
+            <h2 class="titulo">OBRAS LITERARIAS</h2>
             <p>
                 Catálogo de obras ya publicadas por el autor.
             </p>
         </section>
 
         <section class="productos">
-            <h2 class="titulo">Nuestros productos</h2>
+            <h3 class="titulo">Nuestros productos</h3>
             <div id="contenedor-productos" class="contenedor-productos">
                 <article class="tarjeta">
                     <img src="../img/tra.jpg" alt="Novela: Trascendencia" width="150" class="tarjeta-img">
@@ -89,12 +89,12 @@
         </section>
 
         <section class="productos">
-            <h2 class="titulo">Tienda online (API)</h2>
+            <h3 class="titulo">Tienda online (API)</h3>
             <div id="productos-container" class="contenedor-productos"></div>
         </section>
 
         <section> 
-            <h2 class="titulo">PRÓXIMAMENTE</h2>
+            <h3 class="titulo">PRÓXIMAMENTE</h3>
             <p>
                 Aquí encontrarás la información de todo lo que está por llegar.
             </p>
@@ -102,9 +102,15 @@
     </main>
     <footer>
         <p>Síguenos en nuestras redes sociales:</p>
-        <a href="https://web.whatsapp.com/"><i class="fa-brands fa-square-whatsapp"></i></a>
-        <a href="https://www.instagram.com/nicolombardo_escritor/?hl=es-la"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://web.whatsapp.com/" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-square-whatsapp" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.instagram.com/nicolombardo_escritor/?hl=es-la" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.youtube.com/" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+        </a>
     </footer>
     <script src="../javascript/personalizacion.js"></script>
     <script src="../javascript/carrito.js"></script>

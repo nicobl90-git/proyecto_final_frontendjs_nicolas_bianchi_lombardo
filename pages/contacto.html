@@ -11,7 +11,7 @@
 <body>
     <header>
         <img src="../img/banner.jpg" alt="Banner de la página" width="150">
-        <p>Bienvenido al Universo de los Seres</p>
+        <h1>Bienvenido al Universo de los Seres</h1>
         <p id="saludo"></p> <!-- Agrego este saludo para que el archivo JS lo encuentre despues -->
     </header>
     <nav>
@@ -27,7 +27,7 @@
     </nav>
     <main>
         <section>
-            <h1 class="titulo">PERSONALIZÁ TU VISITA</h1>
+            <h2 class="titulo">PERSONALIZÁ TU VISITA</h2>
             <form id="form-preferencias">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" required>
@@ -47,7 +47,7 @@
         </section>
 
         <section class="titulo"> 
-            <h1>CONTACTO</h1>
+            <h2>CONTACTO</h2>
             <p>
                 Bienvenido a la sección de contacto.
             </p>
@@ -83,9 +83,15 @@
     </main>
     <footer>
         <p>Síguenos en nuestras redes sociales:</p>
-        <a href="https://web.whatsapp.com/"><i class="fa-brands fa-square-whatsapp"></i></a>
-        <a href="https://www.instagram.com/nicolombardo_escritor/?hl=es-la"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://web.whatsapp.com/" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-square-whatsapp" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.instagram.com/nicolombardo_escritor/?hl=es-la" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.youtube.com/" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+        </a>
     </footer>
     <script src="../javascript/personalizacion.js"></script>
     <script src="../javascript/carrito.js"></script>
