@@ -32,6 +32,20 @@ body {
     background-blend-mode: multiply; /* Mezclar color + imagen con background-blend-mode	Se ven los dos: la imagen teñida con el color elegido */
 }
 
+video, iframe {
+    width: 100%;
+    max-width: 600px;
+    border: 0;
+}
+
+video {
+    height: auto;
+}
+
+iframe {
+    aspect-ratio: 3 / 2;
+}
+
 
 main section {
     margin-bottom: 60px;

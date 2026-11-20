@@ -21,10 +21,10 @@
             <li><a href="./index.html">INICIO</a></li>
             <li><a href="./pages/producto.html">PRODUCTOS</a></li>
             <li><a href="./pages/contacto.html">CONTACTO</a></li>
-            <div class="carrito">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span id="contador-carrito">0</span>
-            </div>
+            <li><a href="./pages/producto.html" class="carrito" aria-label="Ver carrito de compras">
+                    <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+                    <span id="contador-carrito">0</span>
+                </a></li>
         </ul>
     </nav>
     <main>
@@ -49,11 +49,12 @@
         </section>
 
         <section class="media-section">
-            <video controls width="600" height="400">
+            <video controls>
                 <source src="./video/intro.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de video.
             </video>
 
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24091.231807896485!2d-58.37477001145043!3d-34.60519011483606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccac630121623%3A0x53386f2ac88991a9!2sTeatro%20Col%C3%B3n!5e0!3m2!1ses!2sar!4v1787673597173!5m2!1ses!2sar" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <iframe title="Mapa de ubicación" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24091.231807896485!2d-58.37477001145043!3d-34.60519011483606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccac630121623%3A0x53386f2ac88991a9!2sTeatro%20Col%C3%B3n!5e0!3m2!1ses!2sar!4v1787673597173!5m2!1ses!2sar" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </section>
 
         <section> 
@@ -75,10 +76,12 @@
             <table border="2">
                 <caption>Usuarios que ya nos enviaron mensajes</caption>
                 <thead>
-                    <th>Nombre de usuario</th>
-                    <th>Correo electrónico</th>
-                    <th>Mensaje corto</th>
-                    <th>Estado del mensaje</th>
+                    <tr>
+                        <th>Nombre de usuario</th>
+                        <th>Correo electrónico</th>
+                        <th>Mensaje corto</th>
+                        <th>Estado del mensaje</th>
+                    </tr>
                 </thead>
                 
                 <tbody>
