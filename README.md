@@ -27,3 +27,6 @@ El proyecto está dividido en las siguientes carpetas:
 -VIDEO: aquí almaceno el video utilizado en la página index como presentación
 -Archivo index.html: la página principal del proyecto
 
+LINK DE LA PÁGINA (Github Pages): https://nicobl90-git.github.io/proyecto_final_frontendjs_nicolas_bianchi_lombardo/
+
+
