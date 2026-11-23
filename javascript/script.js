@@ -78,7 +78,7 @@ if (contenedorApi) {
             <h3 class="tarjeta-nombre">${producto.title}</h3>
             <p class="tarjeta-precio">$${producto.price}</p>
             <button class="tarjeta-boton">
-                <i class="fa-solid fa-cart-shopping"></i> Añadir al carrito
+                <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i> Añadir al carrito
             </button>
         `;
 

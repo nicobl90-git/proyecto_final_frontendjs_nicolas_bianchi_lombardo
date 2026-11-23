@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de productos</title>
+    <meta name="description" content="Catálogo de obras literarias del Universo de los Seres y tienda online con precios y carrito de compras.">
+    <title>Obras y tienda | Universo de los Seres</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <img src="../img/banner.jpg" alt="Banner de la página" width="150">
+        <img src="../img/banner.jpg" alt="Logo del Universo de los Seres" width="150">
         <h1>Bienvenido al Universo de los Seres</h1>
         <p id="saludo"></p> <!-- Agrego este saludo para que el archivo JS lo encuentre despues -->
     </header>
@@ -61,7 +62,7 @@
                     <p class="tarjeta-descripcion">Todo comienza con un sueño...</p>
                     <p class="tarjeta-precio">$28.000</p>
                     <button class="tarjeta-boton" aria-label="Agregar Trascendencia al carrito de compras">
-                        <i class="fa-solid fa-cart-shopping"></i> Agregar al carrito
+                        <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i> Agregar al carrito
                     </button>
                 </article>
 
@@ -71,7 +72,7 @@
                     <p class="tarjeta-descripcion">El viaje de Sam</p>
                     <p class="tarjeta-precio">$40.000</p>
                     <button class="tarjeta-boton" aria-label="Agregar El Tren de los Sueños al carrito de compras">
-                        <i class="fa-solid fa-cart-shopping"></i> Agregar al carrito
+                        <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i> Agregar al carrito
                     </button>
                 </article>
 
@@ -81,19 +82,19 @@
                     <p class="tarjeta-descripcion">Una familia, una profecía, una serpiente...</p>
                     <p class="tarjeta-precio">$30.000</p>
                     <button class="tarjeta-boton" aria-label="Agregar Los Ojos de la Serpiente al carrito de compras">
-                        <i class="fa-solid fa-cart-shopping"></i> Agregar al carrito
+                        <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i> Agregar al carrito
                     </button>
                 </article>
             </div>
         </section>
 
         <section class="productos">
-            <h3 class="titulo">Tienda online (API)</h3>
+            <h2 class="titulo">Tienda online (API)</h2>
             <div id="productos-container" class="contenedor-productos"></div>
         </section>
 
         <section> 
-            <h3 class="titulo">PRÓXIMAMENTE</h3>
+            <h2 class="titulo">PRÓXIMAMENTE</h2>
             <p>
                 Aquí encontrarás la información de todo lo que está por llegar.
             </p>
