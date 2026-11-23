@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contactate con el Universo de los Seres: escribinos tu consulta o mensaje.">
     <title>Página de contacto</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../css/styles.css">
@@ -61,22 +62,26 @@
         </section>
 
         <section class="form-and-table">
-            <form action="https://formspree.io/f/mnpqdnaw" method="POST">
+            <form id="form-contacto" action="https://formspree.io/f/mnpqdnaw" method="POST" novalidate>
                 <fieldset class="input-form">
                     <legend>Datos de contacto</legend>
 
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" name="nombre">
+                    <label for="nombre-contacto">Nombre:</label>
+                    <input type="text" id="nombre-contacto" name="nombre" autocomplete="name">
+                    <p class="error" id="error-nombre" role="alert"></p>
 
-                    <label for="email">Correo electrónico:</label>
-                    <input type="email" id="email" name="email">
+                    <label for="email-contacto">Correo electrónico:</label>
+                    <input type="email" id="email-contacto" name="email" autocomplete="email">
+                    <p class="error" id="error-email" role="alert"></p>
 
-                    <label for="mensaje">Mensaje:</label>
-                    <textarea id="mensaje" name="mensaje" rows="4" cols="50"></textarea>
+                    <label for="mensaje-contacto">Mensaje:</label>
+                    <textarea id="mensaje-contacto" name="mensaje" rows="4" cols="50"></textarea>
+                    <p class="error" id="error-mensaje" role="alert"></p>
 
                     <button class="btn bg-primario" type="submit">Enviar</button>
                 </fieldset>
             </form>
+            <script src="../javascript/script.js"></script> 
         </section>
 
 

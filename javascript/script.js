@@ -248,3 +248,52 @@ botonesLibros.forEach(boton => {
 // Al cargar cada página
 actualizarContador();
 renderCarrito();
+
+// ===============================
+// ===== VALIDACIÓN CONTACTO =====
+// ===============================
+
+const formContacto = document.getElementById("form-contacto");
+
+if (formContacto) {
+    formContacto.addEventListener("submit", (evento) => {
+        const nombre = document.getElementById("nombre-contacto");
+        const email = document.getElementById("email-contacto");
+        const mensaje = document.getElementById("mensaje-contacto");
+
+        const errorNombre = document.getElementById("error-nombre");
+        const errorEmail = document.getElementById("error-email");
+        const errorMensaje = document.getElementById("error-mensaje");
+
+        // Limpiar errores anteriores
+        errorNombre.textContent = "";
+        errorEmail.textContent = "";
+        errorMensaje.textContent = "";
+
+        let hayErrores = false;
+
+        if (nombre.value.trim() === "") {
+            errorNombre.textContent = "Ingresá tu nombre.";
+            hayErrores = true;
+        }
+
+        const formatoEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email.value.trim() === "") {
+            errorEmail.textContent = "Ingresá tu correo electrónico.";
+            hayErrores = true;
+        } else if (!formatoEmail.test(email.value.trim())) {
+            errorEmail.textContent = "El correo no tiene un formato válido (ej: nombre@dominio.com).";
+            hayErrores = true;
+        }
+
+        if (mensaje.value.trim().length < 10) {
+            errorMensaje.textContent = "El mensaje debe tener al menos 10 caracteres.";
+            hayErrores = true;
+        }
+
+        // Si hay errores, no se envía a Formspree
+        if (hayErrores) {
+            evento.preventDefault();
+        }
+    });
+}
