@@ -22,8 +22,8 @@ El proyecto está dividido en las siguientes carpetas:
 
 -CSS: arvhivo css para los estilos de la página
 -IMG: carpeta donde guardo las distintas imágenes utilizadas en la página (banner, productos, fondo, etc.)
--JAVASCRIPT: carpeta donde guardo las funciones de JS utilizadas en la página
--PAGES: aquí se encuentran las páginas principales del proyecto: productos y contacto
+-JAVASCRIPT: carpeta donde guardo el archivo con las funciones de JS utilizadas en la página
+-PAGES: aquí se encuentran las páginas principales del proyecto: productos, contacto y carrito
 -VIDEO: aquí almaceno el video utilizado en la página index como presentación
 -Archivo index.html: la página principal del proyecto
 
