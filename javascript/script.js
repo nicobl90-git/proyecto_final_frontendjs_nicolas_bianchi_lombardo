@@ -7,12 +7,23 @@ const inputNombre = document.getElementById("nombre");
 const selectColor = document.getElementById("color");
 const saludo = document.getElementById("saludo");
 const btnReset = document.getElementById("btn-reset");
+const avisoPreferencias = document.getElementById("aviso-preferencias"); // Para lectores de pantalla
+
+// Anunciarmensaje en la región aria-live para lectores de pantalla
+function anunciar(mensaje) {
+    if (!avisoPreferencias) return;
+    avisoPreferencias.textContent = "";
+    setTimeout(() => {
+        avisoPreferencias.textContent = mensaje;
+    }, 100);
+}
 
 function aplicarPreferencias(nombre, color) {
     if (saludo) {
         saludo.textContent = "¡Hola, " + nombre + "!";
     }
     document.body.style.backgroundColor = color;
+
 }
 
 // Al cargar la página: ¿hay algo guardado?
@@ -35,6 +46,10 @@ if (form) {
         localStorage.setItem("color", color);
 
         aplicarPreferencias(nombre, color);
+
+        // Avisa al lector de pantalla
+        const colorElegido = selectColor.options[selectColor.selectedIndex].text;
+        anunciar(`Preferencias guardadas. Hola, ${nombre}. Color de fondo: ${colorElegido}.`);
     });
 }
 
@@ -52,6 +67,9 @@ function restablecerPreferencias() {
     // 3) Vaciar el formulario
     if (form) {
         form.reset();
+
+        // Avisa al lector de pantalla
+        anunciar("Preferencias restablecidas.");
     }
 }
 
@@ -152,6 +170,13 @@ function actualizarContador() {
     if (contadorCarrito) {
         contadorCarrito.textContent = obtenerCarrito().reduce((total, p) => total + p.cantidad, 0);
     }
+
+    const enlaceCarrito = document.getElementById("enlace-carrito");
+    if (enlaceCarrito) {
+        const cantidad = obtenerCarrito().reduce((total, p) => total + p.cantidad, 0);
+        const texto = cantidad === 1 ? "1 producto" : `${cantidad} productos`;
+        enlaceCarrito.setAttribute("aria-label", `Ver carrito de compras, ${texto}`);
+    }
 }
 
 function agregarAlCarrito(producto) {
@@ -172,6 +197,15 @@ function agregarAlCarrito(producto) {
     }
 
     guardarCarrito(carrito);
+    const total = carrito.reduce((suma, p) => suma + p.cantidad, 0);
+    const texto = total === 1 ? "1 producto" : `${total} productos`;
+    const aviso = document.getElementById("aviso-carrito");
+    if (aviso) {
+        aviso.textContent = "";
+        setTimeout(() => {
+            aviso.textContent = `"${producto.title}" añadido. El carrito tiene ${texto}.`;
+        }, 100);
+    }
     alert(`"${producto.title}" se agregó al carrito`);
 }
 
