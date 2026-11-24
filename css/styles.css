@@ -10,14 +10,36 @@ header, footer {
 
 header {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    gap: 0.5rem 1rem;
+    padding: 0.5rem 1rem;
     font-size: 1.8rem;
     font-family: "Playfair Display", serif;
+}
+
+header img {
+    max-width: 100%;
+    height: auto;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    flex: 1 1 14rem;
+    min-width: 0;
+    overflow-wrap: anywhere;
 }
 
 header p {
     flex-grow: 1;
     text-align: center;
+    margin: 0;
+}
+
+header p:empty {
+    display: none;
 }
 
 body {
@@ -268,7 +290,7 @@ footer i {
 /* Pantallas chicas: hasta 600px (celulares) */
 @media only screen and (max-width: 600px) {
     .media-section {
-        grid-template-columns: 1fr; /* 1 sola columna */
+        grid-template-columns: minmax(0, 1fr); /* Una sola columna */
     }
 
     .titulo {
@@ -281,6 +303,10 @@ footer i {
         align-items: center;
         gap: 10px;
     }
+video, iframe {
+        max-width: 100%;
+    }
+
 }
 
 /* Contacto responsivo */

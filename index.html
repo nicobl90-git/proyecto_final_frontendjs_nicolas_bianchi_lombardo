@@ -21,7 +21,7 @@
             <h2 id="titulo--preferencias" class="titulo">PERSONALIZÁ TU VISITA</h2>
             <form id="form-preferencias">
             <p id="aviso-preferencias" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
-                <label for="nombre">Nombre:</label>
+                <label for="nombre">Nombre (obligatorio):</label>
                 <input type="text" id="nombre" required>
 
                 <label for="color">Color de fondo:</label>
@@ -52,8 +52,8 @@
 
     <main id="contenido-principal" tabindex="-1">
         
-        <section class="media-section">
-            <video controls>
+        <section class="media-section" aria-label="Video y ubicación">
+            <video controls title="Video de introducción">
                 <source src="./video/intro.mp4" type="video/mp4">
                 Tu navegador no soporta la reproducción de video.
             </video>
@@ -76,22 +76,21 @@
         </section>
 
         <section class="form-and-table">
-
             <table>
                 <caption>Usuarios que ya nos enviaron mensajes</caption>
                 <thead>
                     <tr>
-                        <th>Nombre de usuario</th>
-                        <th>Correo electrónico</th>
-                        <th>Mensaje corto</th>
-                        <th>Estado del mensaje</th>
+                        <th scope="col">Nombre de usuario</th>
+                        <th scope="col">Correo electrónico</th>
+                        <th scope="col">Mensaje corto</th>
+                        <th scope="col">Estado del mensaje</th>
                     </tr>
                 </thead>
                 
                 <tbody>
                     <tr>
-                        <td rowspan="2">NBL</td>
-                        <td rowspan="2">nbl@yopmail.com</td>
+                        <th scope="row" rowspan="2">NBL</th>
+                        <th scope="row" rowspan="2">nbl@yopmail.com</th>
                         <td>Prueba HTML</td>
                         <td>Recibido</td>
                     </tr>
