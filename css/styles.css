@@ -104,7 +104,8 @@ p {
 }
 
 .bg-primario {
-    background-color: gray;
+    background-color: #e8e2d0;
+    color: #3d3226;
 }
 
 .media-section {

@@ -263,7 +263,7 @@ if (botonVaciar) {
     botonVaciar.addEventListener("click", () => guardarCarrito([]));
 }
 
-// ---------- BOTONES DE TUS LIBROS (hechos a mano en el HTML) ----------
+// ---------- BOTONES DE LOS LIBROS  ----------
 
 const botonesLibros = document.querySelectorAll("#contenedor-productos .tarjeta-boton");
 
@@ -307,21 +307,21 @@ if (formContacto) {
         let hayErrores = false;
 
         if (nombre.value.trim() === "") {
-            errorNombre.textContent = "Ingresá tu nombre.";
+            errorNombre.textContent = "ERROR: Ingresá tu nombre.";
             hayErrores = true;
         }
 
         const formatoEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (email.value.trim() === "") {
-            errorEmail.textContent = "Ingresá tu correo electrónico.";
+            errorEmail.textContent = "ERROR: Ingresá tu correo electrónico.";
             hayErrores = true;
         } else if (!formatoEmail.test(email.value.trim())) {
-            errorEmail.textContent = "El correo no tiene un formato válido (ej: nombre@dominio.com).";
+            errorEmail.textContent = "ERROR: El correo no tiene un formato válido (ej: nombre@dominio.com).";
             hayErrores = true;
         }
 
         if (mensaje.value.trim().length < 10) {
-            errorMensaje.textContent = "El mensaje debe tener al menos 10 caracteres.";
+            errorMensaje.textContent = "ERROR: El mensaje debe tener al menos 10 caracteres.";
             hayErrores = true;
         }
 
