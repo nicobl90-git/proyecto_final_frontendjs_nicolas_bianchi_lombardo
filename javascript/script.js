@@ -26,7 +26,7 @@ function aplicarPreferencias(nombre, color) {
 
 }
 
-// Al cargar la página: ¿hay algo guardado?
+// Al cargar la página, verifico si hay algo guardado
 const nombreGuardado = localStorage.getItem("nombre");
 const colorGuardado = localStorage.getItem("color");
 
@@ -92,7 +92,7 @@ if (contenedorApi) {
         tarjeta.classList.add("tarjeta");
 
         tarjeta.innerHTML = `
-            <img src="${producto.image}" alt="${producto.title}" width="150" class="tarjeta-img">
+            <img src="${producto.image}" alt="" width="150" class="tarjeta-img">
             <h3 class="tarjeta-nombre">${producto.title}</h3>
             <p class="tarjeta-precio">$${producto.price}</p>
             <button class="tarjeta-boton">
@@ -121,6 +121,25 @@ const listaCarrito = document.getElementById("lista-carrito");
 const totalCarrito = document.getElementById("total-carrito");
 const botonVaciar = document.getElementById("vaciar-carrito");
 
+// Anuncia un mensaje al lector de pantalla
+function anunciar(mensaje) {
+    const aviso = document.getElementById("aviso-carrito");
+    if (!aviso) return;
+    aviso.textContent = "";
+    setTimeout(() => { aviso.textContent = mensaje; }, 100);
+}
+
+// Busca un botón de la lista por acción e id de producto
+function buscarBoton(accion, id) {
+    return [...listaCarrito.querySelectorAll("[data-accion]")]
+        .find(b => b.dataset.accion === accion && b.dataset.id === id);
+}
+
+// "1 unidad" / "3 unidades"
+function textoUnidades(n) {
+    return n === 1 ? "1 unidad" : `${n} unidades`;
+}
+
 // "$28.000" -> 28000 (si ya es número, lo deja igual)
 function precioANumero(precio) {
     if (typeof precio === "number") return precio;
@@ -129,7 +148,6 @@ function precioANumero(precio) {
 
 // Lee el carrito guardado y lo normaliza:
 // agrupa repetidos, convierte precios y agrega cantidad si falta.
-// Así también funcionan los productos que ya tenías guardados.
 function obtenerCarrito() {
     let guardado;
     try {
@@ -165,7 +183,7 @@ function guardarCarrito(carrito) {
     renderCarrito();
 }
 
-// Total de unidades (no de líneas)
+// Total de unidades
 function actualizarContador() {
     if (contadorCarrito) {
         contadorCarrito.textContent = obtenerCarrito().reduce((total, p) => total + p.cantidad, 0);
@@ -209,7 +227,7 @@ function agregarAlCarrito(producto) {
     alert(`"${producto.title}" se agregó al carrito`);
 }
 
-// Dibuja la lista en carrito.html (en otras páginas no hace nada)
+// Dibuja la lista en carrito.html
 function renderCarrito() {
     if (!listaCarrito || !totalCarrito) return;
 
@@ -225,11 +243,11 @@ function renderCarrito() {
     carrito.forEach(p => {
         const li = document.createElement("li");
         li.innerHTML = `
-            ${p.image ? `<img src="${p.image}" alt="${p.title}" width="50">` : ""}
+            ${p.image ? `<img src="${p.image}" alt="" width="50">` : ""}
             <span>${p.title}</span>
-            <span>$${p.price.toLocaleString("es-AR")}</span>
+            <span><span class="sr-only">Precio: </span>$${p.price.toLocaleString("es-AR")}</span>
             <button type="button" data-accion="restar" data-id="${p.id}" aria-label="Restar una unidad de ${p.title}">−</button>
-            <span>${p.cantidad}</span>
+            <span><span class="sr-only">Cantidad: </span>${p.cantidad}</span>
             <button type="button" data-accion="sumar" data-id="${p.id}" aria-label="Sumar una unidad de ${p.title}">+</button>
             <span>Subtotal: $${(p.price * p.cantidad).toLocaleString("es-AR")}</span>
             <button type="button" data-accion="eliminar" data-id="${p.id}" aria-label="Eliminar ${p.title} del carrito">Eliminar</button>
@@ -241,26 +259,55 @@ function renderCarrito() {
     totalCarrito.textContent = total.toLocaleString("es-AR");
 }
 
-// Botones +, − y Eliminar de la lista
+// Botones de +, − y Eliminar, con anuncios y foco
 if (listaCarrito) {
     listaCarrito.addEventListener("click", e => {
         const boton = e.target.closest("[data-accion]");
         if (!boton) return;
 
         const carrito = obtenerCarrito();
-        const item = carrito.find(p => p.id === boton.dataset.id);
-        if (!item) return;
+        const indice = carrito.findIndex(p => p.id === boton.dataset.id);
+        if (indice === -1) return;
 
-        if (boton.dataset.accion === "sumar") item.cantidad++;
-        if (boton.dataset.accion === "restar") item.cantidad--;
-        if (boton.dataset.accion === "eliminar") item.cantidad = 0;
+        const item = carrito[indice];
+        const accion = boton.dataset.accion;
 
-        guardarCarrito(carrito.filter(p => p.cantidad > 0));
+        if (accion === "sumar") item.cantidad++;
+        if (accion === "restar") item.cantidad--;
+        if (accion === "eliminar") item.cantidad = 0;
+
+        const quedan = carrito.filter(p => p.cantidad > 0);
+        guardarCarrito(quedan); // vuelve a dibujar la lista
+
+        // --- Anuncio ---
+        const total = quedan.reduce((suma, p) => suma + p.price * p.cantidad, 0);
+        const textoTotal = `Total: $${total.toLocaleString("es-AR")}.`;
+        if (item.cantidad > 0) {
+            anunciar(`${item.title}: ${textoUnidades(item.cantidad)}. ${textoTotal}`);
+        } else if (quedan.length === 0) {
+            anunciar(`${item.title} eliminado. El carrito está vacío.`);
+        } else {
+            anunciar(`${item.title} eliminado del carrito. ${textoTotal}`);
+        }
+
+        // --- Foco ---
+        if (item.cantidad > 0) {
+            buscarBoton(accion, item.id)?.focus();
+        } else if (quedan.length === 0) {
+            document.getElementById("titulo-lista")?.focus();
+        } else {
+            const vecino = quedan[Math.min(indice, quedan.length - 1)];
+            buscarBoton("eliminar", vecino.id)?.focus();
+        }
     });
 }
 
+// Vaciar carrito con anuncio
 if (botonVaciar) {
-    botonVaciar.addEventListener("click", () => guardarCarrito([]));
+    botonVaciar.addEventListener("click", () => {
+        guardarCarrito([]);
+        anunciar("Carrito vaciado. El carrito está vacío.");
+    });
 }
 
 // ---------- BOTONES DE LOS LIBROS  ----------
